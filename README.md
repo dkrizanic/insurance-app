@@ -26,10 +26,12 @@ This application provides a comprehensive solution for managing insurance partne
 - **Framework:** ASP.NET Core MVC 9.0
 - **Language:** C# 11.0
 - **Data Access:** Dapper (Micro ORM)
-- **Database:** SQL Server 2022
+- **Database:** Azure SQL Edge (ARM64/x64 compatible)
 - **UI:** Bootstrap 4, jQuery
 - **Migrations:** Entity Framework Core
 - **Containerization:** Docker & Docker Compose
+
+> **Note:** This project uses Azure SQL Edge for database, which provides full ARM64 support for Apple Silicon Macs and x64 support for Windows/Linux.
 
 ---
 
