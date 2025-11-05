@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.DotSettings.user
+.idea/
+.vscode/
+*.db
+*.db-shm
+*.db-wal
