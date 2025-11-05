@@ -27,7 +27,7 @@ services:
     depends_on:
       sqlserver:
         condition: service_healthy
-    entrypoint: ["/bin/bash", "-c", "/opt/mssql-tools18/bin/sqlcmd -S sqlserver -U sa -P YourStrong@Passw0rd -d master -i /docker-entrypoint-initdb.d/InitialSchema.sql"]
+    entrypoint: ["/bin/bash", "-c", "/opt/mssql-tools18/bin/sqlcmd -S sqlserver -U sa -P YourStrong@Passw0rd -C -d master -i /docker-entrypoint-initdb.d/InitialSchema.sql"]
     volumes:
       - ./src/Data/Scripts/InitialSchema.sql:/docker-entrypoint-initdb.d/InitialSchema.sql:ro
     networks:
@@ -48,6 +48,8 @@ services:
     depends_on:
       sqlserver:
         condition: service_healthy
+      db-init:
+        condition: service_completed_successfully
     networks:
       - insurance-network
 

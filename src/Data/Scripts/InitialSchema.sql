@@ -1,3 +1,13 @@
+-- Create database if it doesn't exist
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'InsuranceApp')
+BEGIN
+    CREATE DATABASE InsuranceApp;
+END
+GO
+
+USE InsuranceApp;
+GO
+
 -- Create Partners table
 CREATE TABLE Partners (
     Id INT IDENTITY(1,1) PRIMARY KEY,
