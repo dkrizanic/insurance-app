@@ -158,6 +158,9 @@ docker-compose logs webapp --tail=50
 # Connect to SQL Server container
 docker exec -it insurance-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P YourStrong@Passw0rd -C
 
+# Manually initialize database schema (if needed)
+docker exec -i insurance-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P YourStrong@Passw0rd -d master -i /docker-entrypoint-initdb.d/InitialSchema.sql
+
 # Backup database volume
 docker run --rm -v insurance-app_sqlserver_data:/data -v $(pwd):/backup alpine tar czf /backup/db-backup.tar.gz /data
 
