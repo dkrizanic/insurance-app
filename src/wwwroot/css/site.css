@@ -294,6 +294,23 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.2s;
   font-size: 0.875rem;
   text-transform: none;
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  text-decoration: none;
+}
+
+a.btn {
+  text-decoration: none;
+}
+
+a.btn:hover,
+a.btn:focus,
+a.btn:active {
+  text-decoration: none;
 }
 
 .btn:hover {
