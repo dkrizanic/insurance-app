@@ -145,7 +145,7 @@ public class PartnerTests
             CreateByUser = "test@example.com",
             IsForeign = false,
             ExternalCode = "EXT-1234567890",
-            Gender = Gender.M
+            Gender = "M"
         };
 
         // Assert
@@ -155,7 +155,7 @@ public class PartnerTests
         partner.PartnerNumber.Should().HaveLength(20);
         partner.CroatianPIN.Should().HaveLength(11);
         partner.ExternalCode.Should().HaveLength(14);
-        partner.Gender.Should().Be(Gender.M);
+        partner.Gender.Should().Be("M");
         partner.PartnerTypeId.Should().Be(PartnerType.Personal);
     }
 }

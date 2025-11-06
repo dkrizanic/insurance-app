@@ -69,8 +69,11 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
                                     </div>
-                                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<InsuranceApp.Models.Enums.Gender>()" class="form-control">
+                                    <select asp-for="Gender" class="form-control">
                                         <option value="">-- Select Gender --</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                        <option value="N">Not Specified</option>
                                     </select>
                                 </div>
                                 <span asp-validation-for="Gender" class="text-danger small"></span>

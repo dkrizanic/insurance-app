@@ -29,7 +29,7 @@ public class ValidationTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
 
@@ -54,7 +54,7 @@ public class ValidationTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
 
@@ -80,7 +80,7 @@ public class ValidationTests
             PartnerNumber = partnerNumber,
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
 
@@ -107,7 +107,7 @@ public class ValidationTests
             CroatianPIN = croatianPIN,
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
 
@@ -132,7 +132,7 @@ public class ValidationTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = externalCode,
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
 
@@ -159,7 +159,7 @@ public class ValidationTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = email,
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
 
@@ -303,3 +303,4 @@ public class ValidationTests
 
     #endregion
 }
+

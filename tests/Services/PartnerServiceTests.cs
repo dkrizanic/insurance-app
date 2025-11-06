@@ -52,7 +52,7 @@ public class PartnerServiceTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
         _partnerRepositoryMock.Setup(x => x.GetByIdAsync(partnerId))
@@ -95,7 +95,7 @@ public class PartnerServiceTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal,
             Policies = new List<Policy>
             {
@@ -127,7 +127,7 @@ public class PartnerServiceTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
         var expectedId = 1;
@@ -179,3 +179,4 @@ public class PartnerServiceTests
         _partnerRepositoryMock.Verify(x => x.ExistsAsync(externalCode), Times.Once);
     }
 }
+

@@ -11,7 +11,7 @@ public class PartnerListViewModel
     public PartnerType PartnerTypeId { get; set; }
     public DateTime CreatedAtUtc { get; set; }
     public bool IsForeign { get; set; }
-    public Gender Gender { get; set; }
+    public string Gender { get; set; } = string.Empty;
     public int PolicyCount { get; set; }
     public decimal TotalPolicyAmount { get; set; }
     public bool RequiresHighlight { get; set; }

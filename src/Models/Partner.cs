@@ -56,7 +56,9 @@ public class Partner
     public string ExternalCode { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Gender is required")]
-    public Gender Gender { get; set; }
+    [RegularExpression(@"^[MFN]$", ErrorMessage = "Gender must be M, F, or N")]
+    [StringLength(1, ErrorMessage = "Gender must be a single character")]
+    public string Gender { get; set; } = string.Empty;
 
     public virtual ICollection<Policy> Policies { get; set; } = new List<Policy>();
 

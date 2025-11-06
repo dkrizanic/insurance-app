@@ -65,7 +65,7 @@ public class PartnersControllerTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
         _partnerServiceMock.Setup(x => x.GetPartnerWithPoliciesAsync(partnerId))
@@ -118,7 +118,7 @@ public class PartnersControllerTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
         _partnerServiceMock.Setup(x => x.PartnerExistsAsync(partner.ExternalCode))
@@ -146,7 +146,7 @@ public class PartnersControllerTests
             PartnerNumber = "12345678901234567890",
             ExternalCode = "EXT-1234567890",
             CreateByUser = "test@example.com",
-            Gender = Gender.M,
+            Gender = "M",
             PartnerTypeId = PartnerType.Personal
         };
         _partnerServiceMock.Setup(x => x.PartnerExistsAsync(partner.ExternalCode))
@@ -309,3 +309,4 @@ public class PartnersControllerTests
         result!.Model.Should().Be(viewModel);
     }
 }
+
