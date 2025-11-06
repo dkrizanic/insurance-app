@@ -4,84 +4,53 @@
     ViewData["Title"] = "Insurance Partners";
 }
 
-<div class="container-fluid py-4">
-    <!-- Header Section -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h1 class="display-4 mb-2">
-                        <i class="fas fa-users text-primary"></i> Insurance Partners
-                    </h1>
-                    <p class="text-muted">Manage your insurance partners and their policies</p>
-                </div>
-                <div>
-                    <a asp-action="Create" class="btn btn-primary btn-lg shadow">
-                        <i class="fas fa-user-plus"></i> Add New Partner
-                    </a>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid" style="max-width: 1200px; padding: 0.75rem; padding-bottom: 3rem; margin: 0 auto;">
+    <!-- Compact Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0" style="font-size: 1.1rem;">
+            <i class="fas fa-users text-primary" style="font-size: 1rem;"></i> Insurance Partners
+        </h5>
+        <a asp-action="Create" class="btn btn-sm btn-primary py-1 px-3" style="font-size: 0.8rem;">
+            <i class="fas fa-user-plus"></i> Add New Partner
+        </a>
     </div>
 
     @if (TempData["SuccessMessage"] != null)
     {
-        <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
-            <strong><i class="fas fa-check-circle mr-2"></i>Success!</strong> @TempData["SuccessMessage"]
+        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+            <strong><i class="fas fa-check-circle mr-2"></i></strong> @TempData["SuccessMessage"]
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     }
 
-    <!-- Stats Cards -->
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <div class="bg-primary text-white rounded-circle p-3">
-                                <i class="fas fa-users fa-2x"></i>
-                            </div>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="text-muted mb-1">Total Partners</h6>
-                            <h3 class="mb-0">@Model.Count()</h3>
-                        </div>
-                    </div>
+    <!-- Summary Stats -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm" style="font-size: 0.85rem;">
+                <div class="card-header bg-light py-1 px-2" style="font-size: 0.8rem; font-weight: 600;">
+                    <i class="fas fa-chart-bar text-primary" style="font-size: 0.75rem;"></i> Summary
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <div class="bg-success text-white rounded-circle p-3">
-                                <i class="fas fa-file-contract fa-2x"></i>
+                <div class="card-body p-2">
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2 mb-sm-1 pb-1" style="border-bottom: 1px solid #f0f0f0;">
+                                <span class="text-muted" style="font-size: 0.75rem;"><i class="fas fa-users" style="width: 14px;"></i> Total Partners</span>
+                                <span class="font-weight-medium">@Model.Count()</span>
                             </div>
                         </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="text-muted mb-1">Total Policies</h6>
-                            <h3 class="mb-0">@Model.Sum(p => p.PolicyCount)</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <div class="bg-info text-white rounded-circle p-3">
-                                <i class="fas fa-euro-sign fa-2x"></i>
+                        <div class="col-12 col-sm-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2 mb-sm-1 pb-1" style="border-bottom: 1px solid #f0f0f0;">
+                                <span class="text-muted" style="font-size: 0.75rem;"><i class="fas fa-file-contract" style="width: 14px;"></i> Total Policies</span>
+                                <span class="font-weight-medium">@Model.Sum(p => p.PolicyCount)</span>
                             </div>
                         </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="text-muted mb-1">Total Value</h6>
-                            <h3 class="mb-0">@Model.Sum(p => p.TotalPolicyAmount).ToString("C")</h3>
+                        <div class="col-12 col-sm-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2 mb-sm-0 pb-sm-1" style="border-bottom: 1px solid #f0f0f0;">
+                                <span class="text-muted" style="font-size: 0.75rem;"><i class="fas fa-euro-sign" style="width: 14px;"></i> Total Value</span>
+                                <span class="font-weight-medium">@Model.Sum(p => p.TotalPolicyAmount).ToString("C0")</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,77 +58,77 @@
         </div>
     </div>
 
-    <!-- Partners Table -->
+    <!-- Partners List -->
     <div class="card border-0 shadow-sm">
-        <div class="card-header bg-white py-3">
-            <h5 class="mb-0"><i class="fas fa-list"></i> Partners List</h5>
+        <div class="card-header bg-light py-1 px-2" style="font-size: 0.8rem; font-weight: 600;">
+            <i class="fas fa-list text-primary" style="font-size: 0.75rem;"></i> Partners List
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                    <thead class="bg-light">
+                <table class="table table-hover table-sm mb-0" style="font-size: 0.8rem;">
+                    <thead class="thead-light" style="font-size: 0.75rem;">
                         <tr>
-                            <th class="border-0">Partner</th>
-                            <th class="border-0">Partner Number</th>
-                            <th class="border-0">Croatian PIN</th>
-                            <th class="border-0">Type</th>
-                            <th class="border-0">Gender</th>
-                            <th class="border-0 text-center">Status</th>
-                            <th class="border-0 text-center">Policies</th>
-                            <th class="border-0 text-end">Total Amount</th>
-                            <th class="border-0 text-center">Actions</th>
+                            <th class="py-1 px-2" style="font-weight: 600;">Partner</th>
+                            <th class="py-1 px-2" style="font-weight: 600;">Partner Number</th>
+                            <th class="py-1 px-2" style="font-weight: 600;">Croatian PIN</th>
+                            <th class="py-1 px-2" style="font-weight: 600;">Type</th>
+                            <th class="py-1 px-2" style="font-weight: 600;">Gender</th>
+                            <th class="text-center py-1 px-2" style="font-weight: 600;">Status</th>
+                            <th class="text-center py-1 px-2" style="font-weight: 600;">Policies</th>
+                            <th class="text-right py-1 px-2" style="font-weight: 600;">Total Amount</th>
+                            <th class="text-center py-1 px-2" style="font-weight: 600;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr class="@(TempData["NewPartnerId"]?.ToString() == item.Id.ToString() ? "table-success" : "")">
-                                <td class="align-middle">
+                                <td class="align-middle py-1 px-2">
                                     <div class="d-flex align-items-center">
                                         @if (item.RequiresHighlight)
                                         {
-                                            <span class="badge badge-warning me-2" title="High Value Partner">
+                                            <span class="badge badge-warning" title="High Value Partner" style="font-size: 0.65rem; padding: 0.2rem 0.3rem; margin-right: 0.5rem;">
                                                 <i class="fas fa-star"></i>
                                             </span>
                                         }
                                         <div>
-                                            <strong>@item.FullName</strong>
+                                            <strong style="font-size: 0.8rem;">@item.FullName</strong>
                                             <br/>
-                                            <small class="text-muted">
+                                            <small class="text-muted" style="font-size: 0.7rem;">
                                                 <i class="fas fa-calendar-alt"></i> 
-                                                Joined @item.CreatedAtUtc.ToString("MMM dd, yyyy")
+                                                @item.CreatedAtUtc.ToString("MMM dd, yyyy")
                                             </small>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="align-middle">
-                                    <code>@item.PartnerNumber</code>
+                                <td class="align-middle py-1 px-2">
+                                    <code style="font-size: 0.7rem;">@item.PartnerNumber</code>
                                 </td>
-                                <td class="align-middle">
+                                <td class="align-middle py-1 px-2">
                                     @if (!string.IsNullOrEmpty(item.CroatianPIN))
                                     {
-                                        <code>@item.CroatianPIN</code>
+                                        <code style="font-size: 0.7rem;">@item.CroatianPIN</code>
                                     }
                                     else
                                     {
-                                        <span class="text-muted">-</span>
+                                        <span class="text-muted" style="font-size: 0.7rem;">-</span>
                                     }
                                 </td>
-                                <td class="align-middle">
+                                <td class="align-middle py-1 px-2">
                                     @if (item.PartnerTypeId.ToString() == "Individual")
                                     {
-                                        <span class="badge badge-primary">
-                                            <i class="fas fa-user"></i> Individual
+                                        <span class="badge badge-primary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;">
+                                            Individual
                                         </span>
                                     }
                                     else
                                     {
-                                        <span class="badge badge-info">
-                                            <i class="fas fa-building"></i> Company
+                                        <span class="badge badge-info" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;">
+                                            Company
                                         </span>
                                     }
                                 </td>
-                                <td class="align-middle">
+                                <td class="align-middle py-1 px-2" style="font-size: 0.75rem;">
                                     @if (item.Gender.ToString() == "Male")
                                     {
                                         <i class="fas fa-mars text-primary"></i>
@@ -172,38 +141,38 @@
                                     {
                                         <i class="fas fa-genderless text-secondary"></i>
                                     }
-                                    @item.Gender.ToString()
+                                    <span style="font-size: 0.75rem;">@item.Gender.ToString()</span>
                                 </td>
-                                <td class="align-middle text-center">
+                                <td class="align-middle text-center py-1 px-2">
                                     @if (item.IsForeign)
                                     {
-                                        <span class="badge badge-secondary">
-                                            <i class="fas fa-globe"></i> Foreign
+                                        <span class="badge badge-warning" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;">
+                                            Foreign
                                         </span>
                                     }
                                     else
                                     {
-                                        <span class="badge badge-success">
-                                            <i class="fas fa-home"></i> Domestic
+                                        <span class="badge badge-success" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;">
+                                            Domestic
                                         </span>
                                     }
                                 </td>
-                                <td class="align-middle text-center">
-                                    <span class="badge badge-pill @(item.PolicyCount > 5 ? "badge-warning" : "badge-secondary")">
+                                <td class="align-middle text-center py-1 px-2">
+                                    <span class="badge badge-pill @(item.PolicyCount > 5 ? "badge-warning" : "badge-secondary")" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">
                                         @item.PolicyCount
                                     </span>
                                 </td>
-                                <td class="align-middle text-end">
-                                    <strong class="@(item.TotalPolicyAmount > 5000 ? "text-warning" : "")">
+                                <td class="align-middle text-right py-1 px-2">
+                                    <strong class="@(item.TotalPolicyAmount > 5000 ? "text-warning" : "")" style="font-size: 0.8rem;">
                                         @item.TotalPolicyAmount.ToString("C")
                                     </strong>
                                 </td>
-                                <td class="align-middle text-center">
+                                <td class="align-middle text-center py-1 px-2">
                                     <div class="btn-group" role="group">
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info" title="View Details">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info py-0 px-2" title="View Details" style="font-size: 0.75rem;">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a asp-action="AddPolicy" asp-route-id="@item.Id" class="btn btn-sm btn-outline-success" title="Add Policy">
+                                        <a asp-action="AddPolicy" asp-route-id="@item.Id" class="btn btn-sm btn-outline-success py-0 px-2" title="Add Policy" style="font-size: 0.75rem;">
                                             <i class="fas fa-plus"></i>
                                         </a>
                                     </div>
